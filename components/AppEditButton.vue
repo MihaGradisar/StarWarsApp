@@ -1,5 +1,5 @@
 <template>
-  <div class="button">
+  <div @click="console.log('click!')" class="button">
     Edit
   </div>
 </template>

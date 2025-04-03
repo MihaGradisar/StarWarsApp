@@ -22,5 +22,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient(circle 370px at center, yellow -300%, #000 100%);
   }
 </style>

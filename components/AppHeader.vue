@@ -10,7 +10,8 @@
 
 <style scoped>
   .header-container {
-    height: 120px;
+    position: absolute;
+    height: 80px;
     width: 100vw;
     display: flex;
     justify-content: center;
