@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import AppEditButton from "./AppEditButton.vue"
+  import AppEditButton from "./AppButton.vue"
 </script>
 
 <template>
@@ -16,7 +16,7 @@
       <p>Gender: <span> {{ "Male" }} </span></p>
     </div>
     <div class="button-container">
-      <AppEditButton/>
+      <AppEditButton buttonText="Edit"/>
     </div>
   </div>
 </template>

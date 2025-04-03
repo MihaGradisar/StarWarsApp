@@ -1,6 +1,15 @@
+<script setup lang="ts">
+  const props = defineProps({
+    buttonText: {
+      type: String,
+      default: 'button'
+    }
+  })
+</script>
+
 <template>
   <div @click="console.log('click!')" class="button">
-    Edit
+    {{ buttonText }}
   </div>
 </template>
 
