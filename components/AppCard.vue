@@ -26,21 +26,19 @@
 <style scoped>
   .card {
     position: relative;
-    height: 450px;
-    width: 208px;
+    height: 420px;
+    width: 185px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: end;
-    margin: 10px;
+    margin: 20px;
+    border-radius: 10px;
   }
 
   img {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    border-radius: 10px;
+    width: 200px;
   }
 
   .container {
