@@ -1,3 +1,7 @@
+<script setup lang="ts">
+  import AppEditButton from "./AppEditButton.vue"
+</script>
+
 <template>
   <div class="card">
     <div class="character-info">
@@ -18,17 +22,20 @@
   .card {
     height: 450px;
     width: 210px;
+    display: flex;
+    justify-content: start;
+    align-items: end;
   }
 
   .character-info {
     z-index: 999;
-    position: absolute;
+    padding: 15px;
   }
 
   .character-info p {
     color: white;
     font-family: Roboto;
-    size: 5px;
+    font-size: 15px;
   }
 
   .character-info p span {
@@ -39,7 +46,7 @@
     height: 450px;
     width: 210px;
     border-radius: 10px;
-    position: relative;
+    position: absolute;
     z-index: 1;
   }
 </style>
