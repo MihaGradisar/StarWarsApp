@@ -44,7 +44,7 @@
     flex-direction: column;
     justify-content: end;
     position: relative;
-    z-index: 999;
+    z-index: 2;
     padding-left: 10px;
   }
 
@@ -61,7 +61,7 @@
 
   .button-container {
     position: relative;
-    z-index: 999;
+    z-index: 2;
     display: flex;
     justify-content: center;
     margin: 20px;

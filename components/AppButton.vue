@@ -1,14 +1,25 @@
 <script setup lang="ts">
-  const props = defineProps({
-    buttonText: {
-      type: String,
-      default: 'button'
-    }
-  })
+import { ref } from 'vue'
+
+const editMenu = ref(true)
+
+// Function for changing state
+const toggleEditMenu = () => {
+  editMenu.value = !editMenu.value
+  console.log(editMenu.value);
+}
+
+// Button props
+const props = defineProps({
+  buttonText: {
+    type: String,
+    default: 'button'
+  }
+})
 </script>
 
 <template>
-  <div @click="console.log('click!')" class="button">
+  <div @click="toggleEditMenu" class="button">
     {{ buttonText }}
   </div>
 </template>
@@ -24,7 +35,7 @@
     font-family: Roboto;
     font-size: 18px;
     font-weight: bold;
-    z-index: 999;
+    z-index: 2;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.2s ease-in-out;
