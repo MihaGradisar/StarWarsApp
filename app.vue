@@ -12,13 +12,15 @@
   <AppHeader/>
   <div class="container">
     <AppCard/>
+    <AppCard/>
+    <AppCard/>
   </div>
 </template>
 
 <style scoped>
   .container {
-    height: 500px;
-    width: 100vw;
-    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>

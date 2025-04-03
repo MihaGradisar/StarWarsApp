@@ -19,7 +19,7 @@
 
   a {
     all: unset;
-    font-family: Arial;
+    font-family: Roboto;
     font-weight: 80;
     cursor: pointer;
     color: white;

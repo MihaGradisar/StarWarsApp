@@ -4,49 +4,72 @@
 
 <template>
   <div class="card">
-    <div class="character-info">
-      <p>Name: <span> {{ "Yoda" }} </span></p>
-      <p>Height: <span> {{ "66cm" }} </span></p>
-      <p>Mass: <span> {{ "13kg" }} </span></p>
-      <p>Hair color: <span> {{ "White" }} </span></p>
-      <p>Skin color: <span> {{ "Green" }} </span></p>
-      <p>Eye color: <span> {{ "Green-gold" }} </span></p>
-      <p>Birth year: <span> {{ "896 BBY" }} </span></p>
-      <p>Gender: <span> {{ "Male" }} </span></p>
+    <img src="../assets/images/yoda.jpg" alt="">
+    <div class="container">
+      <div class="character-info-container">
+        <p>Name: <span> {{ "Yoda" }} </span></p>
+        <p>Height: <span> {{ "66cm" }} </span></p>
+        <p>Mass: <span> {{ "13kg" }} </span></p>
+        <p>Hair color: <span> {{ "White" }} </span></p>
+        <p>Skin color: <span> {{ "Green" }} </span></p>
+        <p>Eye color: <span> {{ "Green-gold" }} </span></p>
+        <p>Birth year: <span> {{ "896 BBY" }} </span></p>
+        <p>Gender: <span> {{ "Male" }} </span></p>
+      </div>
     </div>
-    <img src="../assets/images/yoda.jpg" alt="Yoda">
+    <div class="button-container">
+      <AppEditButton/>
+    </div>
   </div>
 </template>
 
 <style scoped>
   .card {
+    position: relative;
     height: 450px;
-    width: 210px;
+    width: 208px;
+    overflow: hidden;
     display: flex;
-    justify-content: start;
-    align-items: end;
+    flex-direction: column;
+    justify-content: end;
+    margin: 10px;
   }
 
-  .character-info {
+  img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    border-radius: 10px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+
+  .character-info-container {
+    position: relative;
     z-index: 999;
-    padding: 15px;
+    padding-left: 20px;
   }
 
-  .character-info p {
+  .character-info-container p {
     color: white;
     font-family: Roboto;
     font-size: 15px;
   }
 
-  .character-info p span {
+  .character-info-container p span {
     font-weight: bold;
   }
 
-  img {
-    height: 450px;
-    width: 210px;
-    border-radius: 10px;
-    position: absolute;
-    z-index: 1;
+  .button-container {
+    position: relative;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
   }
 </style>
