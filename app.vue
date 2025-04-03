@@ -12,7 +12,7 @@
 <template>
   <AppHeader/>
   <div class="container">
-
+    <AppCard/>
   </div>
 </template>
 
