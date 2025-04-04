@@ -10,6 +10,7 @@
 
 <style scoped>
   .header-container {
+    z-index: 2;
     position: absolute;
     height: 80px;
     width: 100vw;

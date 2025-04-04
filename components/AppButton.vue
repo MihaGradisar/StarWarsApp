@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 const editMenu = ref(true)
 
-// Function for changing state
+// Changes the conditional value for the edit menu
 const toggleEditMenu = () => {
   editMenu.value = !editMenu.value
   console.log(editMenu.value);
@@ -14,12 +14,15 @@ const props = defineProps({
   buttonText: {
     type: String,
     default: 'button'
+  },
+  buttonFunction: {
+    type: Function
   }
 })
 </script>
 
 <template>
-  <div @click="toggleEditMenu" class="button">
+  <div :@click="buttonFunction" class="button">
     {{ buttonText }}
   </div>
 </template>

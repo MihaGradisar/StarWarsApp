@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import AppEditButton from "./AppButton.vue"
+  import toggleEditMenu from "./AppButton.vue"
 </script>
 
 <template>
@@ -16,7 +17,7 @@
       <p>Gender: <span> {{ "Male" }} </span></p>
     </div>
     <div class="button-container">
-      <AppEditButton buttonText="Edit"/>
+      <AppEditButton buttonText="Edit" :buttonFunction="toggleEditMenu.value"/>
     </div>
   </div>
 </template>

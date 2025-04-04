@@ -1,18 +1,48 @@
-<template>
-  <div class="container">
+<script setup lang="ts">
+  import AppButton from './AppButton.vue';
+  import toggleEditMenu from "./AppButton.vue"
 
+</script>
+
+<template>
+  <div class="edit-menu-container">
+    <div class="edit-menu">
+      <div class="buttons-container">
+        <AppButton button-text="Apply" style="margin: 20px;"/>
+        <AppButton button-text="Cancel" :buttonFunction="toggleEditMenu.value" style="margin: 20px"/>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-  .container {
+  .edit-menu-container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  background: rgba(0, 0, 0, 5);
   position: absolute;
   z-index: 3;
+
+  /* Blurr Effect */
+  background:black;
+  background:rgba(0,0,0,0.8);
+
+  }
+
+  .edit-menu {
+    height: 400px;
+    width: 300px;
+    background-color: gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
+  .buttons-container {
+    display: flex;
+    flex-direction: row;
   }
 </style>
