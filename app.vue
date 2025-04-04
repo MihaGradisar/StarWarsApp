@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <AppMenu/>
+  <AppMenu />
   <AppHeader/>
   <div class="container">
     <AppCard/>

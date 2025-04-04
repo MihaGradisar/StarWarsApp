@@ -1,28 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const editMenu = ref(true)
-
-// Changes the conditional value for the edit menu
-const toggleEditMenu = () => {
-  editMenu.value = !editMenu.value
-  console.log(editMenu.value);
-}
-
 // Button props
 const props = defineProps({
   buttonText: {
     type: String,
     default: 'button'
-  },
-  buttonFunction: {
-    type: Function
   }
 })
 </script>
 
 <template>
-  <div :@click="buttonFunction" class="button">
+  <div class="button">
     {{ buttonText }}
   </div>
 </template>

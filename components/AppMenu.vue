@@ -1,7 +1,5 @@
 <script setup lang="ts">
   import AppButton from './AppButton.vue';
-  import toggleEditMenu from "./AppButton.vue"
-
 </script>
 
 <template>
@@ -9,7 +7,7 @@
     <div class="edit-menu">
       <div class="buttons-container">
         <AppButton button-text="Apply" style="margin: 20px;"/>
-        <AppButton button-text="Cancel" :buttonFunction="toggleEditMenu.value" style="margin: 20px"/>
+        <AppButton button-text="Cancel" style="margin: 20px"/>
       </div>
     </div>
   </div>
