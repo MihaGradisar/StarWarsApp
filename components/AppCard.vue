@@ -1,12 +1,8 @@
 <script setup lang="ts">
-  import { ref } from "vue";
-  import isMenuVisible from "../app.vue"
-  //const isMenuVisible = ref(false);
+  import { defineEmits } from "vue";
+  import AppButton from "./AppButton.vue";
 
-  const toggleMenu = () => {
-    isMenuVisible.value = !isMenuVisible.value;
-    console.log(isMenuVisible.value);
-  };
+  const emit = defineEmits(["toggle-menu"]);
 </script>
 
 <template>
@@ -23,7 +19,7 @@
       <p>Gender: <span> {{ "Male" }} </span></p>
     </div>
     <div class="button-container">
-      <AppButton buttonText="Edit" @click="toggleMenu" />
+      <AppButton buttonText="Edit" @click="$emit('toggle-menu')" />
     </div>
   </div>
 </template>

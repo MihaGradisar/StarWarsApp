@@ -7,15 +7,19 @@
   import { ref } from "vue";
   const isMenuVisible = ref(false);
 
+  const toggleMenu = () => {
+    isMenuVisible.value = !isMenuVisible.value;
+    console.log(isMenuVisible.value);
+  };
 </script>
 
 <template>
-  <AppMenu v-if="isMenuVisible" />
+  <AppMenu v-if="isMenuVisible" @toggle-menu="toggleMenu"/>
   <AppHeader/>
   <div class="container">
-    <AppCard />
-    <AppCard />
-    <AppCard />
+    <AppCard @toggle-menu="toggleMenu" />
+    <AppCard @toggle-menu="toggleMenu" />
+    <AppCard @toggle-menu="toggleMenu" />
   </div>
 </template>
 

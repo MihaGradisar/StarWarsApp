@@ -1,13 +1,16 @@
 <script setup lang="ts">
   import AppButton from './AppButton.vue';
+
+  import { defineEmits } from "vue";
+  const emit = defineEmits(["toggle-menu"]);
 </script>
 
 <template>
   <div class="edit-menu-container">
     <div class="edit-menu">
       <div class="buttons-container">
-        <AppButton button-text="Apply" style="margin: 20px;"/>
-        <AppButton button-text="Cancel" style="margin: 20px"/>
+        <AppButton @click="$emit('toggle-menu')" button-text="Apply" style="margin: 20px;"/>
+        <AppButton @click="$emit('toggle-menu')" button-text="Cancel" style="margin: 20px"/>
       </div>
     </div>
   </div>
