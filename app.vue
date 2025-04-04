@@ -4,15 +4,18 @@
   import AppCard from "./components/AppCard.vue"
   import AppMenu from "./components/AppMenu.vue"
 
+  import { ref } from "vue";
+  const isMenuVisible = ref(false);
+
 </script>
 
 <template>
-  <AppMenu />
+  <AppMenu v-if="isMenuVisible" />
   <AppHeader/>
   <div class="container">
-    <AppCard/>
-    <AppCard/>
-    <AppCard/>
+    <AppCard />
+    <AppCard />
+    <AppCard />
   </div>
 </template>
 

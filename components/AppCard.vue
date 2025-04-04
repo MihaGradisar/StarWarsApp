@@ -1,5 +1,12 @@
 <script setup lang="ts">
-  import AppEditButton from "./AppButton.vue"
+  import { ref } from "vue";
+  import isMenuVisible from "../app.vue"
+  //const isMenuVisible = ref(false);
+
+  const toggleMenu = () => {
+    isMenuVisible.value = !isMenuVisible.value;
+    console.log(isMenuVisible.value);
+  };
 </script>
 
 <template>
@@ -16,7 +23,7 @@
       <p>Gender: <span> {{ "Male" }} </span></p>
     </div>
     <div class="button-container">
-      <AppEditButton buttonText="Edit"/>
+      <AppButton buttonText="Edit" @click="toggleMenu" />
     </div>
   </div>
 </template>
