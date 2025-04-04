@@ -1,8 +1,8 @@
 <script setup lang="ts">
   // Component imports
-  import AppHeader from "./components/AppHeader.vue"
-  import AppCard from "./components/AppCard.vue"
-  import AppMenu from "./components/AppMenu.vue"
+  import AppHeader from "./components/AppHeader.vue";
+  import AppCard from "./components/AppCard.vue";
+  import AppMenu from "./components/AppMenu.vue";
 
   import { ref } from "vue";
   const isMenuVisible = ref(false);

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 // Button props
-const props = defineProps({
+defineProps({
   buttonText: {
     type: String,
     default: 'button'
   }
-})
+});
 </script>
 
 <template>
