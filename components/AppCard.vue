@@ -2,7 +2,7 @@
   import { defineEmits } from "vue";
   import AppButton from "./AppButton.vue";
 
-  const emit = defineEmits(["toggle-menu"]);
+  defineEmits(["toggle-menu"]);
 </script>
 
 <template>
@@ -19,6 +19,7 @@
       <p>Gender: <span> {{ "Male" }} </span></p>
     </div>
     <div class="button-container">
+      <!-- Triggers an emit with the ewnet handler -->
       <AppButton buttonText="Edit" @click="$emit('toggle-menu')" />
     </div>
   </div>

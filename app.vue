@@ -14,9 +14,11 @@
 </script>
 
 <template>
+  <!-- Listents for emits. When the button is pressed the "toggle Menu" function is triggered. -->
   <AppMenu v-if="isMenuVisible" @toggle-menu="toggleMenu"/>
   <AppHeader/>
   <div class="container">
+    <!-- Listents for emits. When the button is pressed the "toggle Menu" function is triggered. -->
     <AppCard @toggle-menu="toggleMenu" />
     <AppCard @toggle-menu="toggleMenu" />
     <AppCard @toggle-menu="toggleMenu" />
