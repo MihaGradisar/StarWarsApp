@@ -14,7 +14,7 @@
   import { ref } from "vue";
 
   const isMenuVisible = ref(false);
-  const selectedCharacter = ref<Character | null>(null); //
+  const selectedCharacter = ref<Character | null>(null);
   const characters = ref<Character[]>([]);
 
 
