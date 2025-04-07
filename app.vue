@@ -4,24 +4,87 @@
   import AppCard from "./components/AppCard.vue";
   import AppMenu from "./components/AppMenu.vue";
 
+  // Image imports
+  import yodaImage from "./assets/images/yoda.jpg";
+  import darthVader from "./assets/images/darthVader.jpg";
+  import obiOneKenobi from "./assets/images/obiOneKenobi.jpg";
+
+  import axios from 'axios';
+
   import { ref } from "vue";
   const isMenuVisible = ref(false);
+
+  const characters = ref<Character[]>([]);
+
 
   const toggleMenu = () => {
     isMenuVisible.value = !isMenuVisible.value;
     console.log(isMenuVisible.value);
   };
+
+  interface Character {
+    name: string;
+    height: string;
+    mass: string;
+    hair_color: string;
+    skin_color: string;
+    eye_color: string;
+    birth_year: string;
+    gender: string;
+    image: string;
+  }
+
+  onMounted(() => {
+    console.log("Mounted");
+
+    const characterEndpoints = [
+      "https://swapi.dev/api/people/20",
+      "https://swapi.dev/api/people/4",
+      "https://swapi.dev/api/people/10"
+    ];
+
+    const characterImages = [
+      yodaImage,
+      darthVader,
+      obiOneKenobi
+    ];
+
+    characterEndpoints.forEach((url, index) => {
+      axios.get(url)
+        .then((response) => {
+          characters.value.push({
+            name: response.data.name,
+            height: response.data.height,
+            mass: response.data.mass,
+            hair_color: response.data.hair_color,
+            skin_color: response.data.skin_color,
+            eye_color: response.data.eye_color,
+            birth_year: response.data.birth_year,
+            gender: response.data.gender,
+            image: characterImages[index]
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+  });
 </script>
 
 <template>
   <!-- Listents for emits. When the button is pressed the "toggle Menu" function is triggered. -->
-  <AppMenu v-if="isMenuVisible" @toggle-menu="toggleMenu"/>
+  <AppMenu 
+    v-if="isMenuVisible"
+    @toggle-menu="toggleMenu"/>
   <AppHeader/>
   <div class="container">
-    <!-- Listents for emits. When the button is pressed the "toggle Menu" function is triggered. -->
-    <AppCard @toggle-menu="toggleMenu" />
-    <AppCard @toggle-menu="toggleMenu" />
-    <AppCard @toggle-menu="toggleMenu" />
+    <!-- Render a card for each character -->
+    <AppCard
+      v-for="(character, index) in characters"
+      :key="index"
+      :character="character"
+      @toggle-menu="toggleMenu"
+    />
   </div>
 </template>
 

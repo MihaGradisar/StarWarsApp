@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import AppButton from './AppButton.vue';
 
-  import { defineEmits} from "vue";
+  import { defineEmits } from "vue";
   defineEmits(["toggle-menu"]);
 
 </script>
@@ -13,35 +13,35 @@
       <div class="form-container">
         <div class="form-group">
           <p>Name:</p>
-          <input type="text"></input>
+          <input type="text" />
         </div>
         <div class="form-group">
           <p>Height:</p>
-          <input type="text"></input>
+          <input type="text"/>
         </div>
         <div class="form-group">
           <p>Mass:</p>
-          <input type="text"></input>
+          <input type="text"/>
         </div>
         <div class="form-group">
           <p>Hair color:</p>
-          <input type="text"></input>
+          <input type="text"/>
         </div>
         <div class="form-group">
           <p>Skin color:</p>
-          <input type="text"></input>
+          <input type="text"/>
         </div>
         <div class="form-group">
           <p>Eye color:</p>
-          <input type="text"></input>
+          <input type="text"/>
         </div>
         <div class="form-group">
           <p>Birth year:</p>
-          <input type="text"></input>
+          <input type="text"/>
         </div>
         <div class="form-group">
           <p>Gender:</p>
-          <input type="text"></input>
+          <input type="text"/>
         </div>
       </div>
       <div class="buttons-container">

@@ -3,20 +3,25 @@
   import AppButton from "./AppButton.vue";
 
   defineEmits(["toggle-menu"]);
+
+  defineProps({
+    character: Object,
+  });
+
 </script>
 
 <template>
   <div class="card">
-    <img src="../assets/images/yoda.jpg" alt="">
+    <img :src="character?.image" />
     <div class="character-info-container">
-      <p>Name: <span> {{ "Yoda" }} </span></p>
-      <p>Height: <span> {{ "66cm" }} </span></p>
-      <p>Mass: <span> {{ "13kg" }} </span></p>
-      <p>Hair color: <span> {{ "White" }} </span></p>
-      <p>Skin color: <span> {{ "Green" }} </span></p>
-      <p>Eye color: <span> {{ "Green-gold" }} </span></p>
-      <p>Birth year: <span> {{ "896 BBY" }} </span></p>
-      <p>Gender: <span> {{ "Male" }} </span></p>
+      <p>Name: <span> {{ character?.name }} </span></p>
+      <p>Height: <span> {{ character?.height }} </span></p>
+      <p>Mass: <span> {{ character?.mass }} </span></p>
+      <p>Hair color: <span> {{ character?.hair_color }} </span></p>
+      <p>Skin color: <span> {{ character?.skin_color }} </span></p>
+      <p>Eye color: <span> {{ character?.eye_color }} </span></p>
+      <p>Birth year: <span> {{ character?.birth_year }} </span></p>
+      <p>Gender: <span> {{ character?.gender }} </span></p>
     </div>
     <div class="button-container">
       <!-- Triggers an emit with the ewnet handler -->
