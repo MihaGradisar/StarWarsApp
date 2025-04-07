@@ -5,7 +5,7 @@
   defineEmits(["toggle-menu"]);
 
   defineProps({
-    character: Object,
+    character: Object
   });
 
 </script>
@@ -25,7 +25,7 @@
     </div>
     <div class="button-container">
       <!-- Triggers an emit with the ewnet handler -->
-      <AppButton buttonText="Edit" @click="$emit('toggle-menu')" />
+      <AppButton buttonText="Edit" @click="$emit('toggle-menu', character, console.log(character))" />
     </div>
   </div>
 </template>

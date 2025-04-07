@@ -12,6 +12,7 @@
   import axios from 'axios';
 
   import { ref } from "vue";
+
   const isMenuVisible = ref(false);
 
   const characters = ref<Character[]>([]);

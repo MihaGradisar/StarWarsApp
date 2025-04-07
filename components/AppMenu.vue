@@ -1,8 +1,12 @@
 <script setup lang="ts">
   import AppButton from './AppButton.vue';
-
   import { defineEmits } from "vue";
+  
   defineEmits(["toggle-menu"]);
+
+  defineProps({
+    character: Object
+  });
 
 </script>
 
@@ -13,7 +17,7 @@
       <div class="form-container">
         <div class="form-group">
           <p>Name:</p>
-          <input type="text" />
+          <input type="text"/>
         </div>
         <div class="form-group">
           <p>Height:</p>
