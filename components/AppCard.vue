@@ -25,7 +25,7 @@
     </div>
     <div class="button-container">
       <!-- Triggers an emit with the ewnet handler -->
-      <AppButton buttonText="Edit" @click="$emit('toggle-menu-on')" />
+      <AppButton buttonText="Edit" @click="$emit('toggle-menu-on', character)" />
     </div>
   </div>
 </template>

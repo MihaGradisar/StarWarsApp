@@ -14,13 +14,16 @@
   import { ref } from "vue";
 
   const isMenuVisible = ref(false);
-
+  const selectedCharacter = ref<Character | null>(null); //
   const characters = ref<Character[]>([]);
 
 
-  const toggleMenu = () => {
+  const toggleMenu = (character = null) => {
     isMenuVisible.value = !isMenuVisible.value;
-    console.log(isMenuVisible.value);
+    if (character != null) {
+      selectedCharacter.value = character;
+      console.log(selectedCharacter);
+    }
   };
 
   interface Character {
@@ -76,7 +79,8 @@
 <template>
   <!-- Listents for emits. When the button is pressed the "toggle Menu" function is triggered. -->
   <AppMenu 
-    v-if="isMenuVisible"
+    v-show="isMenuVisible"
+    :selected-character="selectedCharacter"
     @toggle-menu-off="toggleMenu"/>
   <AppHeader/>
   <div class="container">

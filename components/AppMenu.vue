@@ -1,13 +1,26 @@
 <script setup lang="ts">
   import AppButton from './AppButton.vue';
-  import { defineEmits } from "vue";
-  
+  import { defineEmits, defineProps } from "vue";
+
   defineEmits(["toggle-menu-off"]);
 
-  defineProps({
-    character: Object
-  });
+  interface Character {
+    name: string;
+    height: string;
+    mass: string;
+    hair_color: string;
+    skin_color: string;
+    eye_color: string;
+    birth_year: string;
+    gender: string;
+    image: string;
+  }
 
+  defineProps({
+    selectedCharacter: {
+      type: Object as PropType<Character | null>
+    }
+  });
 </script>
 
 <template>
@@ -17,35 +30,35 @@
       <div class="form-container">
         <div class="form-group">
           <p>Name:</p>
-          <input type="text"/>
+          <input type="text" :value=selectedCharacter?.name />
         </div>
         <div class="form-group">
           <p>Height:</p>
-          <input type="text"/>
+          <input type="text" :value=selectedCharacter?.height />
         </div>
         <div class="form-group">
           <p>Mass:</p>
-          <input type="text"/>
+          <input type="text" :value=selectedCharacter?.mass />
         </div>
         <div class="form-group">
           <p>Hair color:</p>
-          <input type="text"/>
+          <input type="text" :value=selectedCharacter?.hair_color />
         </div>
         <div class="form-group">
           <p>Skin color:</p>
-          <input type="text"/>
+          <input type="text" :value=selectedCharacter?.skin_color />
         </div>
         <div class="form-group">
           <p>Eye color:</p>
-          <input type="text"/>
+          <input type="text" :value=selectedCharacter?.eye_color />
         </div>
         <div class="form-group">
           <p>Birth year:</p>
-          <input type="text"/>
+          <input type="text" :value=selectedCharacter?.birth_year />
         </div>
         <div class="form-group">
           <p>Gender:</p>
-          <input type="text"/>
+          <input type="text" :value=selectedCharacter?.gender />
         </div>
       </div>
       <div class="buttons-container">
