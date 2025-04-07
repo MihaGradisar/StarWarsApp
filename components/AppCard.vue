@@ -2,7 +2,7 @@
   import { defineEmits } from "vue";
   import AppButton from "./AppButton.vue";
 
-  defineEmits(["toggle-menu"]);
+  defineEmits(["toggle-menu-on"]);
 
   defineProps({
     character: Object
@@ -25,7 +25,7 @@
     </div>
     <div class="button-container">
       <!-- Triggers an emit with the ewnet handler -->
-      <AppButton buttonText="Edit" @click="$emit('toggle-menu', character, console.log(character))" />
+      <AppButton buttonText="Edit" @click="$emit('toggle-menu-on')" />
     </div>
   </div>
 </template>

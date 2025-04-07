@@ -70,13 +70,14 @@
         });
     });
   });
+
 </script>
 
 <template>
   <!-- Listents for emits. When the button is pressed the "toggle Menu" function is triggered. -->
   <AppMenu 
     v-if="isMenuVisible"
-    @toggle-menu="toggleMenu"/>
+    @toggle-menu-off="toggleMenu"/>
   <AppHeader/>
   <div class="container">
     <!-- Render a card for each character -->
@@ -84,7 +85,7 @@
       v-for="(character, index) in characters"
       :key="index"
       :character="character"
-      @toggle-menu="toggleMenu"
+      @toggle-menu-on="toggleMenu"
     />
   </div>
 </template>
