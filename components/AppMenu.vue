@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppButton from './AppButton.vue'
-import { defineEmits, defineProps, reactive, watch } from "vue"
+import { defineEmits, defineProps, reactive } from "vue"
 import type { PropType } from "vue"
 
 const emit = defineEmits(["toggle-menu-off", "update-character"])
@@ -26,7 +26,7 @@ const props = defineProps({
 const localCharacter = reactive({ ...props.selectedCharacter }) as Character
 
 const applyChanges = () => {
-  emit("update-character", { ...localCharacter })
+  emit("update-character", { ...localCharacter }, "Hello")
   emit("toggle-menu-off")
 }
 </script>

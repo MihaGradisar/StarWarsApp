@@ -28,11 +28,11 @@ const isMenuVisible = ref(false)
 const selectedCharacter = ref<Character | null>(null)
 const characters = ref<Character[]>([])
 
-// loads from local storage or fetch from API.
+// loads data from local storage or fetches the data from API.
 onMounted(async () => {
   const storedCharacters = localStorage.getItem('characters')
-  if (storedCharacters) {
-    characters.value = JSON.parse(storedCharacters)
+  if (storedCharacters) { // Checks if storedCharacters contains a value
+    characters.value = JSON.parse(storedCharacters) // Loads the local data in the characters variable
   } else {
     const endpoints = [
       'https://swapi.dev/api/people/20',
@@ -46,12 +46,12 @@ onMounted(async () => {
       obiOneKenobi
     ]
 
-    // Fetch each endpoint.
+    // Fetches the data from endpoints
     const responses = await Promise.all(
       endpoints.map(url => axios.get(url))
     )
     
-    // Builds the array of characters.
+    // Builds the array of characters
     let fetchedCharacters: Character[] = [] 
     responses.forEach((response, index) => {
       fetchedCharacters.push({
@@ -67,8 +67,8 @@ onMounted(async () => {
         image: images[index]
       })
     })
-    characters.value = fetchedCharacters
-    localStorage.setItem('characters', JSON.stringify(fetchedCharacters))
+    characters.value = fetchedCharacters // Pushes the data in characters variable
+    localStorage.setItem('characters', JSON.stringify(fetchedCharacters)) // Stores the data in local storage
   }
 })
 
@@ -81,11 +81,12 @@ const toggleMenu = (character: Character | null = null) => {
 }
 
 // Update a character in the list.
-const updateCharacter = (updated: Character) => {
+const updateCharacter = (updated: Character) => { // Takes in the data that was passed by AppMenu.vue 
   characters.value.forEach((character, index) => {
+    console.log(typeof updated)
     if (character.id === updated.id) {
       characters.value[index] = updated
-      selectedCharacter.value = updated
+      //selectedCharacter.value = updated
     }
   })
   localStorage.setItem('characters', JSON.stringify(characters.value))
