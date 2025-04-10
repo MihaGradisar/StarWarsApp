@@ -1,30 +1,14 @@
 <script setup lang="ts">
-  // Component imports
   import AppHeader from "./components/AppHeader.vue";
   import AppCard from "./components/AppCard.vue";
   import AppMenu from "./components/AppMenu.vue";
 
-  // Image imports
   import yodaImage from "./assets/images/yoda.jpg";
   import darthVader from "./assets/images/darthVader.jpg";
   import obiOneKenobi from "./assets/images/obiOneKenobi.jpg";
 
   import axios from 'axios';
-
-  import { ref } from "vue";
-
-  const isMenuVisible = ref(false);
-  const selectedCharacter = ref<Character | null>(null);
-  const characters = ref<Character[]>([]);
-
-
-  const toggleMenu = (character = null) => {
-    isMenuVisible.value = !isMenuVisible.value;
-    if (character != null) {
-      selectedCharacter.value = character;
-      console.log(selectedCharacter);
-    }
-  };
+  import { ref, onMounted } from "vue";
 
   interface Character {
     name: string;
@@ -37,6 +21,17 @@
     gender: string;
     image: string;
   }
+
+  const isMenuVisible = ref(false);
+  const selectedCharacter = ref<Character | null>(null);
+  const characters = ref<Character[]>([]);
+
+  const toggleMenu = (character: Character | null = null) => {
+    isMenuVisible.value = !isMenuVisible.value;
+    if (character != null) {
+      selectedCharacter.value = character;
+    }
+  };
 
   onMounted(() => {
     console.log("Mounted");
@@ -53,10 +48,12 @@
       obiOneKenobi
     ];
 
+    
+
     characterEndpoints.forEach((url, index) => {
       axios.get(url)
         .then((response) => {
-          characters.value.push({
+          const character: Character = {
             name: response.data.name,
             height: response.data.height,
             mass: response.data.mass,
@@ -66,25 +63,28 @@
             birth_year: response.data.birth_year,
             gender: response.data.gender,
             image: characterImages[index]
-          });
+          };
+
+          // Saves the character data to local storage
+          localStorage.setItem('character-' + index, JSON.stringify(character)); // JSON.stringefy to store object in a local storage
+
+          // pushes the object into your characters array
+          characters.value.push(character);
         })
         .catch((error) => {
           console.log(error);
         });
     });
   });
-
 </script>
 
 <template>
-  <!-- Listents for emits. When the button is pressed the "toggle Menu" function is triggered. -->
   <AppMenu 
-    v-show="isMenuVisible"
+    v-if="isMenuVisible"
     :selected-character="selectedCharacter"
     @toggle-menu-off="toggleMenu"/>
   <AppHeader/>
   <div class="container">
-    <!-- Render a card for each character -->
     <AppCard
       v-for="(character, index) in characters"
       :key="index"

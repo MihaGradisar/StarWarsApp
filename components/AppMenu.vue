@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import AppButton from './AppButton.vue';
-  import { defineEmits, defineProps } from "vue";
+  import { defineEmits, defineProps, onUnmounted } from "vue";
 
   defineEmits(["toggle-menu-off"]);
 
@@ -21,6 +21,10 @@
       type: Object as PropType<Character | null>
     }
   });
+
+  onUnmounted(()=>
+    console.log('off')
+  )
 </script>
 
 <template>
