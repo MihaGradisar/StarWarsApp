@@ -1,8 +1,8 @@
+//// filepath: /home/mihadev/code/StarWarsApp/components/AppMenu.vue
 <script setup lang="ts">
   import AppButton from './AppButton.vue';
-  import { defineEmits, defineProps, onUnmounted } from "vue";
-
-  defineEmits(["toggle-menu-off"]);
+  import { defineEmits, defineProps, reactive, watch, onUnmounted } from "vue";
+  import type { PropType } from "vue";
 
   interface Character {
     name: string;
@@ -16,15 +16,26 @@
     image: string;
   }
 
-  defineProps({
+  const props = defineProps({
     selectedCharacter: {
       type: Object as PropType<Character | null>
     }
   });
 
-  onUnmounted(()=>
-    console.log('off')
-  )
+  const emit = defineEmits(["toggle-menu-off"]);
+
+  // Create a reactive local copy for editing.
+  const localCharacter = reactive({ ...props.selectedCharacter }) as Character;
+
+  // Watch changes on the local copy.
+  watch(
+  localCharacter,
+  () => {
+    console.log("Local character changed:");
+  },
+  { deep: true }
+);
+  onUnmounted(() => console.log("off"));  
 </script>
 
 <template>
@@ -34,39 +45,39 @@
       <div class="form-container">
         <div class="form-group">
           <p>Name:</p>
-          <input type="text" :value=selectedCharacter?.name />
+          <!-- Now use v-model to bind the local reactive copy -->
+          <input type="text" v-model="localCharacter.name" />
         </div>
         <div class="form-group">
           <p>Height:</p>
-          <input type="text" :value=selectedCharacter?.height />
+          <input type="text" v-model="localCharacter.height" />
         </div>
         <div class="form-group">
           <p>Mass:</p>
-          <input type="text" :value=selectedCharacter?.mass />
+          <input type="text" v-model="localCharacter.mass" />
         </div>
         <div class="form-group">
           <p>Hair color:</p>
-          <input type="text" :value=selectedCharacter?.hair_color />
+          <input type="text" v-model="localCharacter.hair_color" />
         </div>
         <div class="form-group">
           <p>Skin color:</p>
-          <input type="text" :value=selectedCharacter?.skin_color />
+          <input type="text" v-model="localCharacter.skin_color" />
         </div>
         <div class="form-group">
           <p>Eye color:</p>
-          <input type="text" :value=selectedCharacter?.eye_color />
+          <input type="text" v-model="localCharacter.eye_color" />
         </div>
         <div class="form-group">
           <p>Birth year:</p>
-          <input type="text" :value=selectedCharacter?.birth_year />
+          <input type="text" v-model="localCharacter.birth_year" />
         </div>
         <div class="form-group">
           <p>Gender:</p>
-          <input type="text" :value=selectedCharacter?.gender />
+          <input type="text" v-model="localCharacter.gender" />
         </div>
       </div>
       <div class="buttons-container">
-        <!-- Triggers an emit with the ewnet handler -->
         <AppButton @click="$emit('toggle-menu-off')" button-text="Apply" style="margin: 20px;"/>
         <AppButton @click="$emit('toggle-menu-off')" button-text="Cancel" style="margin: 20px"/>
       </div>

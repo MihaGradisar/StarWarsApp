@@ -45,7 +45,11 @@
         "https://swapi.dev/api/people/10"
       ];
 
-      const images = [yodaImage, darthVader, obiOneKenobi];
+      const images = [
+        yodaImage,
+        darthVader, 
+        obiOneKenobi
+      ];
 
       try {
         const responses = await Promise.all(endpoints.map(url => axios.get(url)));
@@ -67,7 +71,7 @@
         characters.value = fetchedCharacters;
         localStorage.setItem("characters", JSON.stringify(fetchedCharacters));
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
     }
   });
