@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { ref, onMounted } from "vue";
+  import axios from "axios";
   import AppHeader from "./components/AppHeader.vue";
   import AppCard from "./components/AppCard.vue";
   import AppMenu from "./components/AppMenu.vue";
@@ -6,9 +8,6 @@
   import yodaImage from "./assets/images/yoda.jpg";
   import darthVader from "./assets/images/darthVader.jpg";
   import obiOneKenobi from "./assets/images/obiOneKenobi.jpg";
-
-  import axios from 'axios';
-  import { ref, onMounted } from "vue";
 
   interface Character {
     name: string;
@@ -28,53 +27,49 @@
 
   const toggleMenu = (character: Character | null = null) => {
     isMenuVisible.value = !isMenuVisible.value;
-    if (character != null) {
+    if (character) {
       selectedCharacter.value = character;
     }
   };
 
-  onMounted(() => {
-    console.log("Mounted");
+  onMounted(async () => {
+    const stored = localStorage.getItem("characters");
+    if (stored) {
+      // Load from local storage if present.
+      characters.value = JSON.parse(stored);
+      console.log("Loaded characters from local storage");
+    } else {
+      const endpoints = [
+        "https://swapi.dev/api/people/20",
+        "https://swapi.dev/api/people/4",
+        "https://swapi.dev/api/people/10"
+      ];
 
-    const characterEndpoints = [
-      "https://swapi.dev/api/people/20",
-      "https://swapi.dev/api/people/4",
-      "https://swapi.dev/api/people/10"
-    ];
+      const images = [yodaImage, darthVader, obiOneKenobi];
 
-    const characterImages = [
-      yodaImage,
-      darthVader,
-      obiOneKenobi
-    ];
-
-    
-
-    characterEndpoints.forEach((url, index) => {
-      axios.get(url)
-        .then((response) => {
-          const character: Character = {
-            name: response.data.name,
-            height: response.data.height,
-            mass: response.data.mass,
-            hair_color: response.data.hair_color,
-            skin_color: response.data.skin_color,
-            eye_color: response.data.eye_color,
-            birth_year: response.data.birth_year,
-            gender: response.data.gender,
-            image: characterImages[index]
+      try {
+        const responses = await Promise.all(endpoints.map(url => axios.get(url)));
+        const fetchedCharacters: Character[] = responses.map((res, index) => {
+          return {
+            name: res.data.name,
+            height: res.data.height,
+            mass: res.data.mass,
+            hair_color: res.data.hair_color,
+            skin_color: res.data.skin_color,
+            eye_color: res.data.eye_color,
+            birth_year: res.data.birth_year,
+            gender: res.data.gender,
+            image: images[index]
           };
-
-          // Saves the character data to local storage
-          localStorage.setItem('character-' + index, JSON.stringify(character)); // JSON.stringefy to store object in a local storage
-
-          // pushes the object into your characters array
-          characters.value.push(character);
-        })
-        .catch((error) => {
-          console.log(error);
         });
-    });
+
+        // Update the array and store in local storage.
+        characters.value = fetchedCharacters;
+        localStorage.setItem("characters", JSON.stringify(fetchedCharacters));
+      } catch (error) {
+        console.error(error);
+      }
+    }
   });
 </script>
 
@@ -82,8 +77,9 @@
   <AppMenu 
     v-if="isMenuVisible"
     :selected-character="selectedCharacter"
-    @toggle-menu-off="toggleMenu"/>
-  <AppHeader/>
+    @toggle-menu-off="toggleMenu"
+  />
+  <AppHeader />
   <div class="container">
     <AppCard
       v-for="(character, index) in characters"
