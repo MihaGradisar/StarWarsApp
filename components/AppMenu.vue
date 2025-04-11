@@ -23,10 +23,10 @@ const props = defineProps({
   }
 })
 
-const localCharacter = reactive({ ...props.selectedCharacter }) as Character
+const localCharacter = reactive({ ...props.selectedCharacter }) as Character // Creates a reactive object to store the changes
 
 const applyChanges = () => {
-  emit("update-character", { ...localCharacter }, "Hello")
+  emit("update-character", { ...localCharacter }) // Emits the current state of the character data
   emit("toggle-menu-off")
 }
 </script>

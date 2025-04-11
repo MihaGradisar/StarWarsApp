@@ -82,14 +82,12 @@ const toggleMenu = (character: Character | null = null) => {
 
 // Update a character in the list.
 const updateCharacter = (updated: Character) => { // Takes in the data that was passed by AppMenu.vue 
-  characters.value.forEach((character, index) => {
-    console.log(typeof updated)
-    if (character.id === updated.id) {
-      characters.value[index] = updated
-      //selectedCharacter.value = updated
+  characters.value.forEach((character, index) => { // Goes threw the array
+    if (character.id === updated.id) { // Finds the maching id
+      characters.value[index] = updated // Updates the correct chracter data
     }
   })
-  localStorage.setItem('characters', JSON.stringify(characters.value))
+  localStorage.setItem('characters', JSON.stringify(characters.value)) // Updates the local storage with updated data
 }
 </script>
 
@@ -121,4 +119,5 @@ const updateCharacter = (updated: Character) => { // Takes in the data that was 
   background: radial-gradient(circle 370px at center, yellow -300%, #000 100%);
   position: absolute;
 }
+
 </style>
