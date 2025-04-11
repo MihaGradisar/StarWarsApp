@@ -84,8 +84,10 @@ const applyChanges = () => {
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  position: absolute;
-  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
   background: rgba(0, 0, 0, 0.8);
 }
 
@@ -139,5 +141,15 @@ h1 {
 .buttons-container {
   display: flex;
   flex-direction: row;
+}
+
+@media (min-height: 320px) {
+  .edit-menu-container {
+    width: 280px;
+  }
+
+  .form-group p {
+  font-size: 13px;
+}
 }
 </style>

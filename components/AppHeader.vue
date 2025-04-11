@@ -11,7 +11,7 @@
 
 <style scoped>
   .header-container {
-    z-index: 999;
+    z-index: 99;
     height: 80px;
     width: 100vw;
     display: flex;
