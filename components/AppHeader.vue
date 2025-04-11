@@ -1,12 +1,25 @@
+<script setup lang="ts">
+import AppMobileMenu from './AppMobileMenu.vue';
+
+import { ref } from 'vue'
+
+const show = ref<boolean>(false);
+
+const toggleMobileMenu = () => {
+  show.value = !show.value
+}
+</script>
+
 <template>
   <div class="header-container">
-    <span class="material-icons">menu</span>
+    <span @click="toggleMobileMenu" class="material-icons">menu</span>
     <span><a href="">Upcoming</a></span>
     <span><a href="">Legacy</a></span>
     <img src="../assets/images/logo.png" alt="Star Wars Logo">
     <span><a href="">Merch</a></span>
     <span><a href="">About</a></span>
   </div>
+  <AppMobileMenu v-if="show"/>
 </template>
 
 <style scoped>
