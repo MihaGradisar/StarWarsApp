@@ -99,7 +99,8 @@ const updateCharacter = (updated: Character) => { // Takes in the data that was 
     @update-character="updateCharacter"
   />
   <AppHeader />
-  <div class="container">
+  <div class="app-container">
+    <div class="card-container">
     <AppCard 
       v-for="character in characters"
       :key="character.id"
@@ -107,17 +108,30 @@ const updateCharacter = (updated: Character) => { // Takes in the data that was 
       @toggle-menu-on="toggleMenu"
     />
   </div>
+  </div>
 </template>
 
 <style scoped>
-.container {
+.app-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background: radial-gradient(circle 370px at center, yellow -300%, #000 100%);
-  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 100%;
+  margin-top: 100px;
 }
 
 </style>
