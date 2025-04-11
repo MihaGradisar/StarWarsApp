@@ -131,7 +131,12 @@ const updateCharacter = (updated: Character) => { // Takes in the data that was 
   flex-wrap: wrap;
   width: 100%;
   min-height: 100%;
-  margin-top: 100px;
+}
+
+@media (max-height: 620px) {
+  .card-container {
+    margin-top: 100px;
+  }
 }
 
 </style>
