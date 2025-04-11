@@ -95,6 +95,7 @@ const applyChanges = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 280px;
   padding: 20px;
   background-color: #1e2023;
   border-radius: 10px;
@@ -128,6 +129,7 @@ h1 {
   font-family: Roboto;
   color: white;
   font-weight: bold;
+  font-size: 13px;
 }
 
 .form-group input {
@@ -141,15 +143,5 @@ h1 {
 .buttons-container {
   display: flex;
   flex-direction: row;
-}
-
-@media (min-height: 320px) {
-  .edit-menu-container {
-    width: 280px;
-  }
-
-  .form-group p {
-  font-size: 13px;
-}
 }
 </style>
